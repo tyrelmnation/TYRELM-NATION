@@ -1,0 +1,12 @@
+{
+  "appId": "com.tyrelmnation.gamechanger",
+  "appName": "Game Changer",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "allowNavigation": ["*"]
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

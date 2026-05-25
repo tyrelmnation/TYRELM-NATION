@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Game Changer — Tyrelm Nation</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080808;--gold:#c9a84c;--gold-dim:rgba(201,168,76,0.2);--text:#e0dcd5;--dim:rgba(224,220,213,0.35);--border:rgba(201,168,76,0.15)}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:300;line-height:1.6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;overflow-x:hidden}
+.console{background:#1c1c1c;border:1px solid #2a2a2a;border-radius:4px;padding:14px;max-width:420px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.6)}
+.vent{display:flex;gap:3px;margin-bottom:8px}
+.vent-line{flex:1;height:2px;background:#222;border-radius:1px}
+.label{font-size:7px;color:rgba(255,255,255,0.12);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;text-align:center}
+.title{font-size:22px;font-weight:600;text-align:center;letter-spacing:-0.02em;margin-bottom:4px}
+.sub{font-size:12px;color:var(--dim);text-align:center;margin-bottom:24px}
+.option{display:block;background:#111;border:1px solid #2a2a2a;border-radius:2px;padding:14px 16px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.2s;cursor:pointer}
+.option:hover{background:#1a1a1a;border-color:var(--gold-dim)}
+.option-icon{font-size:16px;margin-right:10px;opacity:0.5}
+.option-title{font-size:13px;font-weight:400;letter-spacing:1px;text-transform:uppercase}
+.option-desc{font-size:11px;color:var(--dim);margin-top:4px}
+.option.download .option-title{color:var(--gold)}
+.option.download:hover{border-color:var(--gold)}
+.ports{display:flex;gap:0;border-top:1px solid #222;padding-top:8px;justify-content:center;margin-top:16px}
+.port{font-size:6px;color:rgba(255,255,255,0.08);letter-spacing:2px;padding:0 10px;text-transform:uppercase;font-family:monospace}
+.footer{text-align:center;margin-top:16px;font-size:11px;color:var(--dim)}
+</style></head><body>
+
+<div class="console">
+  <div class="vent">
+    <div class="vent-line"></div><div class="vent-line"></div><div class="vent-line"></div>
+    <div class="vent-line"></div><div class="vent-line"></div><div class="vent-line"></div>
+  </div>
+  <div class="label">GAME CHANGER &mdash; LISTEN</div>
+  <div class="title">Game Changer</div>
+  <div class="sub">Tyrelm Nation</div>
+
+  <a class="option download" href="https://raw.githubusercontent.com/tyrelmnation/gamechanger/main/listener-apk/Game%20Changer%20-%20Tyrelm%20Nation-unsigned.apk" target="_blank">
+    <div><span class="option-icon">&#9660;</span><span class="option-title">Download APK</span></div>
+    <div class="option-desc">Install the Game Changer Listener app on your device</div>
+  </a>
+
+  <a class="option" href="https://tyrelmnation.github.io/gamechanger/">
+    <div><span class="option-icon">&#9654;</span><span class="option-title">Listen on Web</span></div>
+    <div class="option-desc">Stream directly in your browser — no install needed</div>
+  </a>
+
+  <div class="ports">
+    <span class="port">DC IN</span>
+    <span class="port">AV</span>
+    <span class="port">USB</span>
+    <span class="port">HDMI</span>
+    <span class="port">LAN</span>
+  </div>
+</div>
+
+<div class="footer">&copy; 2026 Tyrelm Nation</div>
+
+</body></html>
