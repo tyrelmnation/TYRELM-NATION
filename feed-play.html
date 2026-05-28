@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Samplify — Tyrelm Nation</title>
+<title>Feed-Play — Tyrelm Nation</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
@@ -152,7 +152,7 @@ nav .nav-logout:hover{color:var(--gold);border-color:var(--gold-dim)}
 <!-- LOGIN SCREEN -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
-    <div class="logo">Samplify</div>
+    <div class="logo">Feed-<span style="color:var(--offwhite)">Play</span></div>
     <div class="tagline">&#9679; Private listening &amp; feedback</div>
     <label>Enter your name to access your tracks</label>
     <input type="text" id="loginName" placeholder="e.g. Koffee" autocomplete="off" autofocus>
@@ -300,7 +300,7 @@ let fbTimeStamp = null;
   document.body.appendChild(modal);
 
   document.getElementById('dbSettingsBtn').addEventListener('click', function() {
-    document.getElementById('dbTokenInput').value = localStorage.getItem('samplify_db_token') || '';
+    document.getElementById('dbTokenInput').value = localStorage.getItem('feedplay_db_token') || '';
     document.getElementById('dbTokenStatus').textContent = '';
     modal.style.display = 'flex';
   });
@@ -309,7 +309,7 @@ let fbTimeStamp = null;
   document.getElementById('dbTokenSave').addEventListener('click', function() {
     var token = document.getElementById('dbTokenInput').value.trim();
     if (!token) { document.getElementById('dbTokenStatus').textContent = 'Please enter a token'; return; }
-    localStorage.setItem('samplify_db_token', token);
+    localStorage.setItem('feedplay_db_token', token);
     document.getElementById('dbTokenStatus').textContent = '\u2713 Token saved!';
     document.getElementById('dbTokenStatus').style.color = 'var(--green)';
     updateDbStatus();
@@ -319,7 +319,7 @@ let fbTimeStamp = null;
 
 function updateDbStatus() {
   var el = document.getElementById('dbStatus');
-  var token = localStorage.getItem('samplify_db_token');
+  var token = localStorage.getItem('feedplay_db_token');
   if (token) { el.textContent = '\u25CF Dropbox connected'; el.style.color = '#00ff88'; }
   else { el.textContent = '\u25CF Dropbox not connected'; el.style.color = '#ff6b6b'; }
 }
@@ -329,7 +329,7 @@ updateDbStatus();
 // Folder structure: /Samplify/{ClientName}/*.m4a, *.mp3, *.wav, *.flac
 
 function getDropboxToken() {
-  return localStorage.getItem('samplify_db_token');
+  return localStorage.getItem('feedplay_db_token');
 }
 
 function dropboxHeaders() {
@@ -600,7 +600,7 @@ function loadFeedback(trackTitle) {
     return;
   }
   var slug = (clientName + '_' + trackTitle).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '') || 'unknown';
-  RTDB.ref('samplify_feedback/' + slug).once('value').then(function(snap) {
+  RTDB.ref('feedplay_feedback/' + slug).once('value').then(function(snap) {
     var data = snap.val();
     var comments = data ? Object.values(data) : [];
     comments.sort(function(a, b) { return (a.time || 0) - (b.time || 0); });
@@ -651,7 +651,7 @@ document.getElementById('fbSubmit').addEventListener('click', function() {
     timestamp: fbTimeStamp,
     date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
   };
-  RTDB.ref('samplify_feedback/' + slug).push(comment).then(function() {
+  RTDB.ref('feedplay_feedback/' + slug).push(comment).then(function() {
     document.getElementById('fbInput').value = '';
     btn.disabled = false;
     btn.textContent = 'Send Feedback';
@@ -683,7 +683,7 @@ function showToast(msg) {
 
 // ===== CHECK FOR EXISTING TOKEN =====
 (function() {
-  var token = localStorage.getItem('samplify_db_token');
+  var token = localStorage.getItem('feedplay_db_token');
   if (!token) {
     // Show a notice about setup
     console.log('Samplify: Set up your Dropbox token');
